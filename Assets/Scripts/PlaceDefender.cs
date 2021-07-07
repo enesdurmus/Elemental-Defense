@@ -26,12 +26,16 @@ public class PlaceDefender : MonoBehaviour
 
     public void DragDefender()
     {
-        defender.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0f, Input.mousePosition.y));
-        Debug.Log(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0f, Input.mousePosition.y)));
+        Vector3 temp = Input.mousePosition;
+        temp.z = 28.6f + (Input.mousePosition.y / 120);
+        temp.x -= 15f;
+        defender.transform.position = Camera.main.ScreenToWorldPoint(temp);
     }
 
     public void Place()
     {
+        defender.transform.position = new Vector3(defender.transform.position.x, 0f, defender.transform.position.z);
         defenderCreated = false;
+        Debug.Log("sa");
     }
 }
