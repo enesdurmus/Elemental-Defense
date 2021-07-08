@@ -34,8 +34,16 @@ public class PlaceDefender : MonoBehaviour
 
     public void Place()
     {
-        defender.transform.position = new Vector3(defender.transform.position.x, 0f, defender.transform.position.z);
-        defenderCreated = false;
-        Debug.Log("sa");
+        if(defender.transform.Find("Player").
+            Find("Robe").GetComponent<MeshRenderer>().material.name == "PlacebleMaterial (Instance)")
+        {
+            defender.transform.position = new Vector3(defender.transform.position.x, 0f, defender.transform.position.z);
+            defenderCreated = false;
+        }
+        else
+        {
+            defenderCreated = false;
+            Destroy(defender);
+        }
     }
 }

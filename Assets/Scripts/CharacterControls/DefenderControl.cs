@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterControl : MonoBehaviour
+public class DefenderControl : MonoBehaviour
 {
 
     [SerializeField] private Material placebleMat;
@@ -16,11 +16,17 @@ public class CharacterControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        clothes.material = placebleMat;
+        if (other.transform.root.gameObject.CompareTag("PlacementArea"))
+        {
+            clothes.material = placebleMat;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        clothes.material = notPlacebleMat;
+        if (other.transform.root.gameObject.CompareTag("PlacementArea"))
+        {
+            clothes.material = notPlacebleMat;
+        }
     }
 }
