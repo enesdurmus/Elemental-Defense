@@ -7,11 +7,11 @@ public class DefenderControl : MonoBehaviour
 
     [SerializeField] private Material placebleMat;
     [SerializeField] private Material notPlacebleMat;
-    private MeshRenderer clothes;
+    private SkinnedMeshRenderer clothes;
 
     private void Start()
     {
-        clothes = transform.Find("Player").transform.Find("Robe").GetComponent<MeshRenderer>();
+        clothes = transform.Find("RiggedCharacter").transform.Find("Cult Leader").GetComponent<SkinnedMeshRenderer>();
     }
 
     private void OnTriggerEnter(Collider other)

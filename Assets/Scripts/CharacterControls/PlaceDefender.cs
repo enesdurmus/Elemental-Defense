@@ -34,8 +34,7 @@ public class PlaceDefender : MonoBehaviour
 
     public void Place()
     {
-        if(defender.transform.Find("Player").
-            Find("Robe").GetComponent<MeshRenderer>().material.name == "PlacebleMaterial (Instance)")
+        if(defender.transform.Find("RiggedCharacter").transform.Find("Cult Leader").GetComponent<SkinnedMeshRenderer>().material.name == "PlacebleMaterial (Instance)")
         {
             defender.transform.position = new Vector3(defender.transform.position.x, 0f, defender.transform.position.z);
             defenderCreated = false;
