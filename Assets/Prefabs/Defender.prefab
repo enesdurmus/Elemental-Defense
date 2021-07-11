@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081f669247949784ca8d4505557ce352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spraySkillPrefab: {fileID: 1634767862067424, guid: 007c57e2df8e9b144b99f471b84f3d56,
+  spraySkillPrefab: {fileID: 1634767862067424, guid: 122c9e7787d34e24f8ece21ec4cd30a9,
     type: 3}
   throwSkillPrefab: {fileID: 1947871717301538, guid: a990e3ac1318b834488c784d851f42a9,
     type: 3}

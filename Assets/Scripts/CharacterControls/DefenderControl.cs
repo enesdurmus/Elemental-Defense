@@ -5,7 +5,7 @@ using UnityEngine;
 public class DefenderControl : MonoBehaviour
 {
     private enum DefenderType { Sprayer, Thrower, Stormer };
-    private DefenderType defenderType = DefenderType.Thrower;
+    private DefenderType defenderType = DefenderType.Sprayer;
 
     [SerializeField] private GameObject spraySkillPrefab;
     [SerializeField] private GameObject throwSkillPrefab;
@@ -19,6 +19,8 @@ public class DefenderControl : MonoBehaviour
 
     private GameObject defenderSkill;
     private bool isTargetSet = false;
+
+    private bool canThrow = true;
 
     private SkinnedMeshRenderer clothes;
 
@@ -36,7 +38,10 @@ public class DefenderControl : MonoBehaviour
                     ExecuteSpraySkill();
                     break;
                 case DefenderType.Thrower:
-                    ExecuteThrowSkill();
+                    if (canThrow)
+                    {
+                        ExecuteThrowSkill();
+                    }
                     break;
                 case DefenderType.Stormer:
                     break;
@@ -53,13 +58,9 @@ public class DefenderControl : MonoBehaviour
 
     private void ExecuteThrowSkill()
     {
-        transform.LookAt(target.transform);
-        Vector3 directionToMove = target.transform.position - transform.position;      
-        directionToMove = directionToMove.normalized * Time.deltaTime * 10f;
-        //float maxDistance = Vector3.Distance(transform.position, target.transform.position);
-        //defenderSkill.transform.position = defenderSkill.transform.position + Vector3.ClampMagnitude(directionToMove, maxDistance);
-        defenderSkill.transform.position = defenderSkill.transform.position + directionToMove;
-
+        defenderSkill.GetComponent<FireBallControl>().Throw(target, defenderSkill);
+        defenderSkill = null;
+        StartCoroutine(ThrowAgainCounter());
     }
 
     public void SetTarget(GameObject target)
@@ -82,6 +83,16 @@ public class DefenderControl : MonoBehaviour
             this.target = target;
             isTargetSet = true;
         }
+    }
+
+    IEnumerator ThrowAgainCounter()
+    {
+        canThrow = false;
+        yield return new WaitForSeconds(3);
+        if (this.target != null) {
+            defenderSkill = Instantiate(throwSkillPrefab, transform.Find("FlameThrowPoint").transform);
+        }
+        canThrow = true;
     }
 
     public void ClearTarget()
