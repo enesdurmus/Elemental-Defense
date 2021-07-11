@@ -13,4 +13,16 @@ public class AttackerControl : MonoBehaviour
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         agent.destination = reachPoint.transform.position;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Defender"))
+            other.GetComponent<DefenderControl>().SetTarget(this.gameObject);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Defender"))
+            other.GetComponent<DefenderControl>().ClearTarget();
+    }
 }
