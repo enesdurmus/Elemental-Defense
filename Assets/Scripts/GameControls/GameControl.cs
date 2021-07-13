@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class GameControl : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private enum ElementalType { Fire, Earth, Water };
+    private ElementalType elementalType;
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void SetElementalType(string type)
+    {
+        if (type.Equals("Fire"))
+        {
+            elementalType = ElementalType.Fire;
+        }
+        else if (type.Equals("Earth"))
+        {
+            elementalType = ElementalType.Earth;
+        }
+        else if (type.Equals("Water"))
+        {
+            elementalType = ElementalType.Water;
+        }
     }
 }

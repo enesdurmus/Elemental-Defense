@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBallControl : MonoBehaviour
+public class BallControl : MonoBehaviour
 {
     [SerializeField] GameObject explosionPrefab;
     private GameObject target;

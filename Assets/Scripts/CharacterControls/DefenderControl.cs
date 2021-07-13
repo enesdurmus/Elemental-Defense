@@ -5,7 +5,7 @@ using UnityEngine;
 public class DefenderControl : MonoBehaviour
 {
     private enum DefenderType { Sprayer, Thrower, Stormer };
-    private DefenderType defenderType = DefenderType.Sprayer;
+    private DefenderType defenderType = DefenderType.Thrower;
 
     [SerializeField] private GameObject spraySkillPrefab;
     [SerializeField] private GameObject throwSkillPrefab;
@@ -58,7 +58,8 @@ public class DefenderControl : MonoBehaviour
 
     private void ExecuteThrowSkill()
     {
-        defenderSkill.GetComponent<FireBallControl>().Throw(target, defenderSkill);
+        transform.LookAt(target.transform);
+        defenderSkill.GetComponent<BallControl>().Throw(target, defenderSkill);
         defenderSkill = null;
         StartCoroutine(ThrowAgainCounter());
     }
