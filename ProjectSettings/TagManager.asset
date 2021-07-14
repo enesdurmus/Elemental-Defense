@@ -8,6 +8,10 @@ TagManager:
   - ReachPoint
   - Defender
   - Attacker
+  - FireBall
+  - WaterBall
+  - FireSpray
+  - WaterSpray
   layers:
   - Default
   - TransparentFX

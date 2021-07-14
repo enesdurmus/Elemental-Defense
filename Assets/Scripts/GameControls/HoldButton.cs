@@ -20,6 +20,6 @@ public class HoldButton : Button
     public override void OnPointerUp(PointerEventData eventData)
     {
         base.OnPointerUp(eventData);
-        gameControl.GetComponent<PlaceDefender>().Place();
+        gameControl.GetComponent<PlaceDefender>().Place(transform.name);
     }
 }

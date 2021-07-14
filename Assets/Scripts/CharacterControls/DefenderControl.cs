@@ -5,12 +5,11 @@ using UnityEngine;
 public class DefenderControl : MonoBehaviour
 {
     private enum DefenderType { Sprayer, Thrower, Stormer };
-    private DefenderType defenderType = DefenderType.Thrower;
+    private DefenderType defenderType;
 
-    [SerializeField] private GameObject spraySkillPrefab;
-    [SerializeField] private GameObject throwSkillPrefab;
-    [SerializeField] private GameObject stormSkillPrefab;
-
+    private GameObject spraySkillPrefab;
+    private GameObject throwSkillPrefab;
+    private GameObject stormSkillPrefab;
 
     [SerializeField] private Material placebleMat;
     [SerializeField] private Material notPlacebleMat;
@@ -19,7 +18,7 @@ public class DefenderControl : MonoBehaviour
 
     private GameObject defenderSkill;
     private bool isTargetSet = false;
-
+    private bool isPlaced = false;
     private bool canThrow = true;
 
     private SkinnedMeshRenderer clothes;
@@ -33,7 +32,8 @@ public class DefenderControl : MonoBehaviour
     {
         if (isTargetSet)
         {
-            switch (defenderType) {
+            switch (defenderType)
+            {
                 case DefenderType.Sprayer:
                     ExecuteSpraySkill();
                     break;
@@ -47,6 +47,14 @@ public class DefenderControl : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void SetSkills(GameObject spraySkillPrefab, GameObject throwSkillPrefab, GameObject stormSkillPrefab)
+    {
+        this.spraySkillPrefab = spraySkillPrefab;
+        this.throwSkillPrefab = throwSkillPrefab;
+        this.stormSkillPrefab = stormSkillPrefab;
+        isPlaced = true;
     }
 
     private void ExecuteSpraySkill()
@@ -66,23 +74,38 @@ public class DefenderControl : MonoBehaviour
 
     public void SetTarget(GameObject target)
     {
-        if (!isTargetSet)
+        if (isPlaced)
         {
-            switch (defenderType)
+            if (!isTargetSet)
             {
-                case DefenderType.Sprayer:
-                    defenderSkill = Instantiate(spraySkillPrefab, transform.Find("FlameThrowPoint").transform);
-                    break;
-                case DefenderType.Thrower:
-                    defenderSkill = Instantiate(throwSkillPrefab, transform.Find("FlameThrowPoint").transform);
-                    break;
-                case DefenderType.Stormer:
-                    defenderSkill = Instantiate(stormSkillPrefab, transform.Find("FlameThrowPoint").transform);
-                    break;
-            }
+                switch (defenderType)
+                {
+                    case DefenderType.Sprayer:
+                        defenderSkill = Instantiate(spraySkillPrefab, transform.Find("FlameThrowPoint").transform);
+                        break;
+                    case DefenderType.Thrower:
+                        defenderSkill = Instantiate(throwSkillPrefab, transform.Find("FlameThrowPoint").transform);
+                        break;
+                    case DefenderType.Stormer:
+                        defenderSkill = Instantiate(stormSkillPrefab, transform.Find("FlameThrowPoint").transform);
+                        break;
+                }
 
-            this.target = target;
-            isTargetSet = true;
+                this.target = target;
+                isTargetSet = true;
+            }
+        }
+    }
+
+    public void SetDefenderType(string defenderType)
+    {
+        if (defenderType.Equals("Sprayer"))
+        {
+            this.defenderType = DefenderType.Sprayer;
+        }
+        else if (defenderType.Equals("Thrower"))
+        {
+            this.defenderType = DefenderType.Thrower;
         }
     }
 
@@ -90,7 +113,8 @@ public class DefenderControl : MonoBehaviour
     {
         canThrow = false;
         yield return new WaitForSeconds(3);
-        if (this.target != null) {
+        if (this.target != null)
+        {
             defenderSkill = Instantiate(throwSkillPrefab, transform.Find("FlameThrowPoint").transform);
         }
         canThrow = true;

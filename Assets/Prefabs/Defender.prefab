@@ -78,11 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081f669247949784ca8d4505557ce352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spraySkillPrefab: {fileID: 1634767862067424, guid: 122c9e7787d34e24f8ece21ec4cd30a9,
-    type: 3}
-  throwSkillPrefab: {fileID: 1947871717301538, guid: 99ef53508eb700046a00b6fbbd454bdb,
-    type: 3}
-  stormSkillPrefab: {fileID: 0}
   placebleMat: {fileID: 2100000, guid: cf090ef3990e2b64790628482554d316, type: 2}
   notPlacebleMat: {fileID: 2100000, guid: 63279a57b50f428448130f421043347e, type: 2}
 --- !u!95 &996164215423643919
@@ -226,6 +221,10 @@ PrefabInstance:
     - target: {fileID: 1368886562889974, guid: df3177fc67fceda4cb1e5acda4964f5c, type: 3}
       propertyPath: m_Name
       value: Dissolve
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368886562889974, guid: df3177fc67fceda4cb1e5acda4964f5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4360551715590484, guid: df3177fc67fceda4cb1e5acda4964f5c, type: 3}
       propertyPath: m_RootOrder

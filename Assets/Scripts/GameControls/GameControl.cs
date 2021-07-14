@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GameControl : MonoBehaviour
 {
-    private enum ElementalType { Fire, Earth, Water };
-    private ElementalType elementalType;
+    private string elementalType;
 
     void Start()
     {
@@ -19,17 +18,11 @@ public class GameControl : MonoBehaviour
 
     public void SetElementalType(string type)
     {
-        if (type.Equals("Fire"))
-        {
-            elementalType = ElementalType.Fire;
-        }
-        else if (type.Equals("Earth"))
-        {
-            elementalType = ElementalType.Earth;
-        }
-        else if (type.Equals("Water"))
-        {
-            elementalType = ElementalType.Water;
-        }
+        elementalType = type;
+    }
+
+    public string GetElementalType()
+    {
+        return "Water";
     }
 }
