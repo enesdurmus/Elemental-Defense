@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameControl : MonoBehaviour
 {
     private string elementalType;
+    [SerializeField] Animator sideMenuAnimator;
 
     void Start()
     {
@@ -19,10 +20,12 @@ public class GameControl : MonoBehaviour
     public void SetElementalType(string type)
     {
         elementalType = type;
+        sideMenuAnimator.SetBool("Selected", true);
+
     }
 
     public string GetElementalType()
     {
-        return "Water";
+        return elementalType;
     }
 }

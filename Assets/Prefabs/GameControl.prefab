@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &845520665264465852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845520665264465854}
+  - component: {fileID: 845520665264465853}
+  - component: {fileID: 2406441484753230779}
+  m_Layer: 0
+  m_Name: GameControl
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &845520665264465854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845520665264465852}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &845520665264465853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845520665264465852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ae1018097707a24b8f60f1af0f2754b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defenderPrefab: {fileID: 4916030577535282524, guid: 720014b71b197df41b9ba8216aa94fa1,
+    type: 3}
+  fireSpraySkillPrefab: {fileID: 1634767862067424, guid: 007c57e2df8e9b144b99f471b84f3d56,
+    type: 3}
+  fireThrowSkillPrefab: {fileID: 1947871717301538, guid: a990e3ac1318b834488c784d851f42a9,
+    type: 3}
+  fireStormSkillPrefab: {fileID: 100016, guid: 3f1d919251d33ab45a23dc83a945d1da, type: 3}
+  earthSpraySkillPrefab: {fileID: 0}
+  earthThrowSkillPrefab: {fileID: 0}
+  earthStormSkillPrefab: {fileID: 0}
+  waterSpraySkillPrefab: {fileID: 1634767862067424, guid: 122c9e7787d34e24f8ece21ec4cd30a9,
+    type: 3}
+  waterThrowSkillPrefab: {fileID: 1947871717301538, guid: 99ef53508eb700046a00b6fbbd454bdb,
+    type: 3}
+  waterStormSkillPrefab: {fileID: 1121192042590650, guid: 73b597c5a7205794090667649507cd45,
+    type: 3}
+--- !u!114 &2406441484753230779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845520665264465852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36440f9a7ca60cc4a9082e7f8b00f037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sideMenuAnimator: {fileID: 0}

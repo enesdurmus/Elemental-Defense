@@ -16,6 +16,9 @@ public class PlaceDefender : MonoBehaviour
     [SerializeField] private GameObject waterThrowSkillPrefab;
     [SerializeField] private GameObject waterStormSkillPrefab;
 
+    private float zOffSet = 20f;
+
+
     private GameObject defender;
     private bool defenderCreated = false;
 
@@ -36,9 +39,9 @@ public class PlaceDefender : MonoBehaviour
     public void DragDefender()
     {
         Vector3 temp = Input.mousePosition;
-        temp.z = 24.6f + (Input.mousePosition.y / 120);
-        temp.x -= 15f;
+        temp.z = zOffSet + (Input.mousePosition.y / 180);
         defender.transform.position = Camera.main.ScreenToWorldPoint(temp);
+        defender.transform.position = new Vector3(defender.transform.position.x, 0f, defender.transform.position.z);
     }
 
     public void Place(string defenderType)
@@ -47,8 +50,8 @@ public class PlaceDefender : MonoBehaviour
         {
             defender.transform.position = new Vector3(defender.transform.position.x, 0f, defender.transform.position.z);
             defender.GetComponent<DefenderControl>().SetDefenderType(defenderType);
-            defender.transform.position.Set(0f, 0f, 0f);
             string elementalType = GetComponent<GameControl>().GetElementalType();
+
             if (elementalType.Equals("Fire"))
             {
                 defender.GetComponent<DefenderControl>().SetSkills(fireSpraySkillPrefab, fireThrowSkillPrefab, fireStormSkillPrefab);
@@ -56,6 +59,10 @@ public class PlaceDefender : MonoBehaviour
             else if (elementalType.Equals("Water"))
             {
                 defender.GetComponent<DefenderControl>().SetSkills(waterSpraySkillPrefab, waterThrowSkillPrefab, waterStormSkillPrefab);
+            }
+            else if (elementalType.Equals("Earth"))
+            {
+                defender.GetComponent<DefenderControl>().SetSkills(earthSpraySkillPrefab, earthSpraySkillPrefab, earthSpraySkillPrefab);
             }
             defenderCreated = false;
         }
