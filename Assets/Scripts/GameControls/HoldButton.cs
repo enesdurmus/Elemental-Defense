@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class HoldButton : Button
 {
-    GameObject gameControl;
+    GameControl gameControl;
 
     protected override void Start()
     {
-        gameControl = GameObject.FindGameObjectWithTag("GameController");
+        gameControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameControl>();
     }
 
     public override void OnPointerDown(PointerEventData eventData)
     {
         base.OnPointerDown(eventData);
-        gameControl.GetComponent<PlaceDefender>().CreateDefender();
+        if (!gameControl.isGameRunning)
+        {
+            gameControl.GetComponent<PlaceDefender>().CreateDefender();
+        }
     }
 
     public override void OnPointerUp(PointerEventData eventData)
     {
         base.OnPointerUp(eventData);
-        gameControl.GetComponent<PlaceDefender>().Place(transform.name);
+        Client client = new Client();
+        if (!gameControl.isGameRunning)
+        {
+            gameControl.GetComponent<PlaceDefender>().Place(transform.name);
+        }
     }
 }
